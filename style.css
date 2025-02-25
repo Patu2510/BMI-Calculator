@@ -19,7 +19,7 @@ body {
 
 .card::before {
     content: '';
-    background-image: url('https://images.unsplash.com/photo-1514516872028-1c1c1c1c1c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEwfHx3ZWJ8ZW58MHx8fHwxNjM2NDI2NDI4&ixlib=rb-1.2.1&q=80&w=400'); /* Decorative image */
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.myhealthcare.co%2Fhealth-blogs%2Frole-of-nutrition-in-physical-fitness&psig=AOvVaw2GJ0nruuGHeojBqRbiimPC&ust=1740552172191000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjT4qmc3osDFQAAAAAdAAAAABAR'); /* Decorative image */
     background-size: cover;
     background-position: center;
     position: absolute;

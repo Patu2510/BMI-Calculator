@@ -34,7 +34,7 @@ document.getElementById("healthForm").addEventListener("submit", function(event)
                 <li>Consider strength training exercises to build muscle.</li>
             </ul>
         `;
-    } else if (bmi >= 18.5 && bmi < 24.9) {
+    } else if (bmi >= 18.5 && bmi < 24.99) {
         category = "Healthy";
         recommendation = `Great job, <strong>${name}</strong>! Maintain your healthy lifestyle.`;
 
@@ -48,7 +48,7 @@ document.getElementById("healthForm").addEventListener("submit", function(event)
                 <li>Engage in regular physical activity like walking or yoga.</li>
             </ul>
         `;
-    } else if (bmi >= 25 && bmi < 29.9) {
+    } else if (bmi >= 25 && bmi < 29.99) {
         category = "Overweight";
         let weightToLose = (weight - maxHealthyWeight).toFixed(1);
         recommendation = `You should lose around <strong>${weightToLose} kg</strong> to reach a healthy weight.`;
