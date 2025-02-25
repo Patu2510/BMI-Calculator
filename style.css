@@ -1,0 +1,71 @@
+body {
+    background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGhlYWx0aHxlbnwwfHx8fDE2MzY0MjY0Mjg&ixlib=rb-1.2.1&q=80&w=1080'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.card {
+    background: rgba(52, 73, 94, 0.9); /* Semi-transparent background for better readability */
+    color: white;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px; /* Added padding for better spacing */
+    animation: slideIn 0.5s ease-in-out;
+    position: relative; /* For positioning the decorative image */
+}
+
+.card::before {
+    content: '';
+    background-image: url('https://images.unsplash.com/photo-1514516872028-1c1c1c1c1c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDEwfHx3ZWJ8ZW58MHx8fHwxNjM2NDI2NDI4&ixlib=rb-1.2.1&q=80&w=400'); /* Decorative image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: -50px; /* Adjust as needed */
+    left: -50px; /* Adjust as needed */
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    opacity: 0.1; /* Make it subtle */
+    border-radius: 50%; /* Circular shape */
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center; /* Centered the heading */
+}
+
+#result {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center; /* Centered the result text */
+}
+
+.btn {
+    transition: background-color 0.3s ease; /* Smooth transition for button hover */
+}
+
+.btn:hover {
+    background-color: #218c54;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
