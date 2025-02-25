@@ -88,12 +88,12 @@ document.getElementById("healthForm").addEventListener("submit", function(event)
 
     // Store the diet plan but don't show it yet
     document.getElementById("dietPlan").innerHTML = dietPlan;
-    document.getElementById("dietPlan").style.display = "none";
-    document.getElementById("showPlanBtn").style.display = "block";
+    document.getElementById("dietPlan").style.display = "none"; // Ensure hidden at first
+    document.getElementById("showPlanBtn").style.display = "block"; // Show button after BMI calculation
 });
 
 // Show diet plan on button click
 document.getElementById("showPlanBtn").addEventListener("click", function() {
-    document.getElementById("dietPlan").style.display = "block";
-    this.style.display = "none"; // Hide button after showing plan
+    document.getElementById("dietPlan").style.display = "block"; // Show diet plan
+    this.style.display = "none"; // Hide button after plan is shown
 });
