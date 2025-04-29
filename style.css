@@ -1,71 +1,341 @@
+:root {
+    --primary-color: #10b981;
+    --primary-dark: #059669;
+    --secondary-color: #6366f1;
+    --dark-bg: #111827;
+    --card-bg: #1f2937;
+    --text-light: #f9fafb;
+    --text-muted: #9ca3af;
+    --border-color: #374151;
+    --underweight: #3b82f6;
+    --normal: #10b981;
+    --overweight: #f59e0b;
+    --obese: #ef4444;
+}
+
 body {
-    background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGhlYWx0aHxlbnwwfHx8fDE2MzY0MjY0Mjg&ixlib=rb-1.2.1&q=80&w=1080'); /* Background image */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    animation: fadeIn 1.5s ease-in-out;
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    color: var(--text-light);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    letter-spacing: -0.025em;
+}
+
+.main-container {
+    padding: 2rem 1rem;
+    flex-grow: 1;
 }
 
 .card {
-    background: rgba(52, 73, 94, 0.9); /* Semi-transparent background for better readability */
-    color: white;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 100%;
-    padding: 20px; /* Added padding for better spacing */
-    animation: slideIn 0.5s ease-in-out;
-    position: relative; /* For positioning the decorative image */
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
 }
 
-.card::before {
-    content: '';
-    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.myhealthcare.co%2Fhealth-blogs%2Frole-of-nutrition-in-physical-fitness&psig=AOvVaw2GJ0nruuGHeojBqRbiimPC&ust=1740552172191000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjT4qmc3osDFQAAAAAdAAAAABAR'); /* Decorative image */
-    background-size: cover;
-    background-position: center;
+.form-card {
+    position: relative;
+    padding-top: 2.5rem;
+}
+
+.result-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: -50px; /* Adjust as needed */
-    left: -50px; /* Adjust as needed */
-    width: 100px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
-    opacity: 0.1; /* Make it subtle */
-    border-radius: 50%; /* Circular shape */
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-h2 {
-    font-weight: bold;
-    text-align: center; /* Centered the heading */
+.progress-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    border: 2px solid var(--border-color);
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
-#result {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center; /* Centered the result text */
+.progress-circle.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
 }
 
-.btn {
-    transition: background-color 0.3s ease; /* Smooth transition for button hover */
+.progress-line {
+    height: 2px;
+    width: 3rem;
+    background-color: var(--border-color);
+    z-index: 1;
+    margin: 0 -5px;
 }
 
-.btn:hover {
-    background-color: #218c54;
+/* Form Styling */
+.form-label {
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
+.form-control, .input-group-text {
+    background-color: rgba(31, 41, 55, 0.8);
+    border-color: var(--border-color);
+    color: var(--text-light);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus {
+    background-color: rgba(31, 41, 55, 0.9);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.25);
+}
+
+.input-group-text {
+    color: var(--primary-color);
+}
+
+/* Gender Selection */
+.gender-selector {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.gender-option {
+    flex: 1;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gender-option:hover {
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.form-check-input:checked ~ .form-check-label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.gender-option .form-check-input {
+    display: none;
+}
+
+.gender-option.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+/* Height Unit Selector */
+.height-unit-selector .btn-outline-secondary {
+    color: var(--text-light);
+    border-color: var(--border-color);
+    background-color: transparent;
+}
+
+.height-unit-selector .btn-check:checked + .btn-outline-secondary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* Button Styles */
+.btn-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.5);
+}
+
+.btn-outline-success {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline-secondary {
+    border-color: var(--border-color);
+    color: var(--text-light);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--border-color);
+    color: white;
+}
+
+/* BMI Meter */
+.bmi-meter {
+    padding: 1rem 0;
+}
+
+.meter-container {
+    position: relative;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.meter-scale {
+    display: flex;
+    height: 0.75rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.scale-section {
+    flex: 1;
+    height: 100%;
+}
+
+.scale-section.underweight {
+    background-color: var(--underweight);
+}
+
+.scale-section.normal {
+    background-color: var(--normal);
+}
+
+.scale-section.overweight {
+    background-color: var(--overweight);
+}
+
+.scale-section.obese {
+    background-color: var(--obese);
+}
+
+.meter-pointer {
+    position: absolute;
+    bottom: 0;
+    width: 2px;
+    height: 2rem;
+    background-color: white;
+    transform: translateX(-50%);
+    left: 30%; /* Default position - will be set by JS */
+    transition: left 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.meter-pointer::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+}
+
+.meter-labels span {
+    flex: 1;
+    text-align: center;
+}
+
+/* Diet Plan */
+.plan-header {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.plan-header i {
+    font-size: 1.5rem;
+}
+
+#dietPlan {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Footer */
+.footer {
+    background-color: rgba(17, 24, 39, 0.8);
+    color: var(--text-muted);
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .gender-selector {
+        flex-direction: column;
+        gap: 0.5rem;
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    
+    .card {
+        margin-bottom: 1rem;
     }
+}
+
+.weight-range {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--obese);
 }
