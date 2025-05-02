@@ -74,7 +74,8 @@ p {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -1.5rem;
+/*     top: -1.5rem; */
+      top: -2rem;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -354,7 +355,4 @@ input::placeholder, .form-control::placeholder {
 .invalid-feedback {
     display: none;
     color: var(--obese);
-}
-.progress-indicator {
-    top: -2rem; /* Previously -1.5rem */
 }
