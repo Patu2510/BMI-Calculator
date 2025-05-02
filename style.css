@@ -355,3 +355,6 @@ input::placeholder, .form-control::placeholder {
     display: none;
     color: var(--obese);
 }
+.progress-indicator {
+    top: -2rem; /* Previously -1.5rem */
+}
