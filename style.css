@@ -6,6 +6,7 @@
     --card-bg: #1f2937;
     --text-light: #f9fafb;
     --text-muted: #9ca3af;
+    --text-dark: #1f2937;
     --border-color: #374151;
     --underweight: #3b82f6;
     --normal: #10b981;
@@ -22,6 +23,14 @@ body {
     flex-direction: column;
 }
 
+h1, h2, h3, h4, h5, h6, label, span, strong {
+    color: var(--text-light);
+}
+
+p {
+    color: var(--text-muted);
+}
+
 .navbar {
     background-color: rgba(17, 24, 39, 0.8);
     backdrop-filter: blur(10px);
@@ -32,6 +41,7 @@ body {
 .navbar-brand {
     font-size: 1.75rem;
     letter-spacing: -0.025em;
+    color: var(--text-light);
 }
 
 .main-container {
@@ -46,6 +56,7 @@ body {
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin-bottom: 2rem;
+    color: var(--text-light);
 }
 
 .form-card {
@@ -104,13 +115,13 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.form-control, .input-group-text {
+.form-control, .input-group-text, input, select, textarea {
     background-color: rgba(31, 41, 55, 0.8);
     border-color: var(--border-color);
     color: var(--text-light);
 }
 
-.form-control::placeholder {
+input::placeholder, .form-control::placeholder {
     color: var(--text-muted);
 }
 
@@ -141,6 +152,8 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
+    background-color: var(--card-bg);
+    color: var(--text-light);
 }
 
 .gender-option:hover {
@@ -256,7 +269,7 @@ body {
     height: 2rem;
     background-color: white;
     transform: translateX(-50%);
-    left: 30%; /* Default position - will be set by JS */
+    left: 30%;
     transition: left 1s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -275,6 +288,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.75rem;
+    color: var(--text-light);
 }
 
 .meter-labels span {
@@ -286,6 +300,7 @@ body {
 .plan-header {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-color);
+    color: var(--text-light);
 }
 
 .plan-header i {
@@ -322,7 +337,7 @@ body {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .card {
         margin-bottom: 1rem;
     }
@@ -333,6 +348,7 @@ body {
     border-left: 4px solid var(--primary-color);
     padding: 1rem;
     border-radius: 0.5rem;
+    color: var(--text-light);
 }
 
 .invalid-feedback {
