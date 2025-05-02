@@ -16,15 +16,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const showPlanBtn = document.getElementById("showPlanBtn");
     const dietPlanDiv = document.getElementById("dietPlan");
     
-    // Gender selection styling
+    // Gender selection style
     const genderOptions = document.querySelectorAll('.gender-option');
     genderOptions.forEach(option => {
         option.addEventListener('click', function() {
-            // Find the radio input inside this option and select it
             const radio = this.querySelector('input[type="radio"]');
             radio.checked = true;
             
-            // Update visual styling
             genderOptions.forEach(opt => opt.classList.remove('selected'));
             this.classList.add('selected');
         });
@@ -121,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Add input event listeners for real-time validation
+    //  input event listeners for real-time validation
     nameInput.addEventListener("input", validateName);
     ageInput.addEventListener("input", validateAge);
     heightCmInput.addEventListener("input", validateHeight);
@@ -129,11 +127,11 @@ document.addEventListener("DOMContentLoaded", function () {
     inchesInput.addEventListener("input", validateHeight);
     weightInput.addEventListener("input", validateWeight);
 
-    // Calculate BMI and display result
+    // Calculation
     healthForm.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        // Validate all fields
+        // Validation
         const isNameValid = validateName();
         const isAgeValid = validateAge();
         const isHeightValid = validateHeight();
@@ -143,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return false; // Stop form submission if validation fails
         }
 
-        // Get form values
+        // Geting form values
         const name = nameInput.value.trim();
         const age = parseInt(ageInput.value);
         const gender = document.querySelector('input[name="gender"]:checked').value;
@@ -173,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (bmi < 18.5) {
             category = "Underweight";
             bmiClass = "text-primary";
-            pointerPosition = (bmi / 40) * 100; // Position relative to max BMI of 40
+            pointerPosition = (bmi / 40) * 100; 
         } else if (bmi >= 18.5 && bmi < 25) {
             category = "Normal Weight";
             bmiClass = "text-success";
@@ -185,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             category = "Obese";
             bmiClass = "text-danger";
-            pointerPosition = Math.min((bmi / 40) * 100, 95); // Cap at 95% to stay within scale
+            pointerPosition = Math.min((bmi / 40) * 100, 95); 
         }
         
         // Weight status message
@@ -200,11 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
             statusMessage = `You're <strong>${weightToLose} kg</strong> above your ideal weight range.`;
         }
         
-        // Update healthy weight range
+        //  healthy weight range
         document.getElementById("healthyWeightRange").innerHTML = 
             `<strong>${minHealthyWeight} kg - ${maxHealthyWeight} kg</strong>`;
         
-        // Update result content
+        //  result content
         document.getElementById("result").innerHTML = `
             <h3 class="mb-3">Hello, ${name}!</h3>
             <div class="bmi-result mb-3">
@@ -214,10 +212,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
         
-        // Move the BMI pointer
+        //  BMI pointer
         document.getElementById("bmiPointer").style.left = `${pointerPosition}%`;
         
-        // Generate personalized diet plan
+        //  personalized diet plan
         generateDietPlan(bmi, gender, age);
         
         // Show result container
@@ -227,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
         resultContainer.style.display = "block";
     });
     
-    // Generate diet plan based on BMI
+    // diet plan based on BMI
     function generateDietPlan(bmi, gender, age) {
         let planHtml = "";
         
