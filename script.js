@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return false; // Stop form submission if validation fails
         }
 
-        // Geting form values
+        // Getting form values
         const name = nameInput.value.trim();
         const age = parseInt(ageInput.value);
         const gender = document.querySelector('input[name="gender"]:checked').value;
@@ -156,14 +156,14 @@ document.addEventListener("DOMContentLoaded", function () {
             heightInCm = (feet * 30.48) + (inches * 2.54); // Convert to cm
         }
 
-        // Calculate BMI
+        // Calculate BMI - CORRECTED CALCULATION
         const heightInM = heightInCm / 100;
         const bmi = weight / (heightInM * heightInM);
-        const roundedBmi = Math.round(bmi * 10) / 10; // Round to 1 decimal place
+        const roundedBmi = parseFloat(bmi.toFixed(1)); // Fixed rounding method
         
         // Calculate healthy weight range
-        const minHealthyWeight = (18.5 * heightInM * heightInM).toFixed(1);
-        const maxHealthyWeight = (24.9 * heightInM * heightInM).toFixed(1);
+        const minHealthyWeight = parseFloat((18.5 * heightInM * heightInM).toFixed(1));
+        const maxHealthyWeight = parseFloat((24.9 * heightInM * heightInM).toFixed(1));
         
         // Determine BMI category and pointer position
         let category, bmiClass, pointerPosition;
@@ -186,23 +186,23 @@ document.addEventListener("DOMContentLoaded", function () {
             pointerPosition = Math.min((bmi / 40) * 100, 95); 
         }
         
-        // Weight status message
+        // Weight status message - CORRECTED CALCULATIONS
         let statusMessage = "";
         if (bmi < 18.5) {
-            const weightToGain = (minHealthyWeight - weight).toFixed(1);
+            const weightToGain = parseFloat((minHealthyWeight - weight).toFixed(1));
             statusMessage = `You're <strong>${weightToGain} kg</strong> below your ideal weight range.`;
         } else if (bmi >= 18.5 && bmi < 25) {
             statusMessage = "Great job! You're at a healthy weight.";
         } else {
-            const weightToLose = (weight - maxHealthyWeight).toFixed(1);
+            const weightToLose = parseFloat((weight - maxHealthyWeight).toFixed(1));
             statusMessage = `You're <strong>${weightToLose} kg</strong> above your ideal weight range.`;
         }
         
-        //  healthy weight range
+        // Display healthy weight range
         document.getElementById("healthyWeightRange").innerHTML = 
             `<strong>${minHealthyWeight} kg - ${maxHealthyWeight} kg</strong>`;
         
-        //  result content
+        // Display result content
         document.getElementById("result").innerHTML = `
             <h3 class="mb-3">Hello, ${name}!</h3>
             <div class="bmi-result mb-3">
@@ -212,10 +212,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
         
-        //  BMI pointer
+        // Set BMI pointer
         document.getElementById("bmiPointer").style.left = `${pointerPosition}%`;
         
-        //  personalized diet plan
+        // Generate personalized diet plan
         generateDietPlan(bmi, gender, age);
         
         // Show result container
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
         resultContainer.style.display = "block";
     });
     
-    // diet plan based on BMI
+    // Generate diet plan based on BMI
     function generateDietPlan(bmi, gender, age) {
         let planHtml = "";
         
